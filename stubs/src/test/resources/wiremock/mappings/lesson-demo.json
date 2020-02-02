@@ -1,0 +1,24 @@
+{
+  "mappings": [
+   {
+      "request": {
+        "method": "GET",
+        "url": "/moscow"
+      },
+      "response": {
+        "status": 200,
+        "body": "Good morning\n"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/london"
+      },
+      "response": {
+        "status": 200,
+        "body": "Good evening\n"
+      }
+    }
+  ]
+}
