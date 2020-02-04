@@ -32,7 +32,7 @@ public class RestAssuredTest {
         given()
                 .body("{\"description\": \"RestAssured example lessons Old\"}")
                 .when()
-                .patch("repos/dvkashin1/lessons")
+                .patch("repos/dmitry-yarmush/javaqa-lessons")
                 .then()
                 .statusCode(200);
 

@@ -13,9 +13,19 @@ import static org.hamcrest.core.Is.is;
 public class JsonPathTest {
 
 
-
     @Test
     public void pathTest() {
+         given()
+                .filters(new RequestLoggingFilter(), new ResponseLoggingFilter(), new OAuth2Filter())
+                .when()
+                .get("https://api.github.com/")
+                .then()
+                .statusCode(200)
+                .body("issues_url", is("https://api.github.com/issues"));
+    }
+
+    @Test
+    public void pathExtractTest() {
         String issuesUrl = given()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter(), new OAuth2Filter())
                 .when()

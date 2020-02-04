@@ -21,7 +21,7 @@ public class BaseConfigurationTest {
     public void baseConfTest() {
         given()
                 .when()
-                .get("repos/dvkashin1/lessons")
+                .get("repos/dmitry-yarmush/javaqa-lessons")
                 .then()
                 .statusCode(200);
     }
