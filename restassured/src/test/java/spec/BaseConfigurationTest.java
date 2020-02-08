@@ -14,7 +14,7 @@ public class BaseConfigurationTest {
     @BeforeAll
     public static void setUpRestAssuredConfiguration() {
         RestAssured.baseURI = "https://api.github.com/";
-        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter(), new OAuth2Filter());
+        RestAssured.filters(new OAuth2Filter(), new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
     @Test

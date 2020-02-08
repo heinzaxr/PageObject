@@ -14,11 +14,12 @@ public class RequestSpecificationTest {
         RequestSpecification requestSpec = given()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
                 .baseUri("https://api.github.com/repos/")
-                .pathParam("owner","Selenide")
-                .pathParam("repos","Selenide")
+                .pathParam("owner", "Selenide")
+                .pathParam("repos", "Selenide")
                 .queryParam("state", "closed");
 
-        requestSpec
+        given()
+                .spec(requestSpec)
                 .when()
                 .get("{owner}/{repos}/issues")
                 .then()

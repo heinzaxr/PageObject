@@ -16,35 +16,40 @@ public class RestAssuredTest {
     @BeforeAll
     public static void setUpRestAssuredConfiguration() {
         RestAssured.baseURI = "https://api.github.com/";
-        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter(), new OAuth2Filter());
+        RestAssured.filters(new OAuth2Filter(), new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
     @Test
     public void authTest() {
-        String descriptionOld = given()
-                .when()
-                .get("user/repos")
-                .then()
-                .statusCode(200)
-                .extract()
-                .path("description[0]");
-
         given()
-                .body("{\"description\": \"RestAssured example lessons Old\"}")
+                .body("{\"description\": \"RestAssured example lessons OLD\"}")
                 .when()
                 .patch("repos/dmitry-yarmush/javaqa-lessons")
                 .then()
                 .statusCode(200);
 
-        String descriptionNew = given()
+        String descriptionOld = getDescription();
+
+        given()
+                .body("{\"description\": \"RestAssured example lessons NEW\"}")
+                .when()
+                .patch("repos/dmitry-yarmush/javaqa-lessons")
+                .then()
+                .statusCode(200);
+
+        String descriptionNew = getDescription();
+
+        assertThat(descriptionOld, not(descriptionNew));
+    }
+
+    private String getDescription() {
+        return given()
                 .when()
                 .get("user/repos")
                 .then()
                 .statusCode(200)
                 .extract()
                 .path("description[0]");
-
-        assertThat(descriptionOld, not(descriptionNew));
     }
 
 }

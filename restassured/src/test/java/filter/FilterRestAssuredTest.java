@@ -12,6 +12,7 @@ public class FilterRestAssuredTest {
     public void authTest() {
         given()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter(), new OAuth2Filter())
+                .noFilters()
                 .when()
                 .get("https://api.github.com/user/repos")
                 .then()
