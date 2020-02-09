@@ -1,10 +1,7 @@
 package cases;
 
 import org.junit.Test;
-import pages.LoginPage;
-import pages.IssuesPage;
-import pages.RepositoriesPage;
-import pages.RepositoryTopBarElement;
+import pages.*;
 import utils.BaseHooks;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -18,16 +15,18 @@ public class GithubPageObjectTest extends BaseHooks {
         loginPage.open()
                 .search("Selenide");
 
-        RepositoriesPage repositoriesPage = new RepositoriesPage(driver);
-        repositoriesPage.clickFirstRepository();
+        SearchPage searchPage = new SearchPage(driver);
+        searchPage.clickFirstRepository();
 
         RepositoryTopBarElement repositoryTopBarElement = new RepositoryTopBarElement(driver);
         repositoryTopBarElement.openIssues();
 
-        IssuesPage issuesPage = new IssuesPage(driver);
-        issuesPage.clickIssuesByNumber(0);
+        ListOfIssuesPage listOfIssuesPage = new ListOfIssuesPage(driver);
+        listOfIssuesPage.clickIssuesByNumber(0);
 
-        String title = issuesPage.getIssueTitle();
+        IssuePage issuePage = new IssuePage(driver);
+        String title = issuePage.getIssueTitle();
+
         assertThat(title, is("Status: Open"));
     }
 

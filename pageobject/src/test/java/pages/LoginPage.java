@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends AbstractPage {
     private static final String URL = "https://github.com/";
-    private By searchInput = By.xpath("//input[@name='q']");
+    private By search = By.xpath("//input[@name='q']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -18,11 +18,11 @@ public class LoginPage extends AbstractPage {
         return this;
     }
 
-    public RepositoriesPage search(String text) {
-        driver.findElement(searchInput).sendKeys(text);
-        driver.findElement(searchInput).sendKeys(Keys.ENTER);
+    public SearchPage search(String text) {
+        driver.findElement(search).sendKeys(text);
+        driver.findElement(search).sendKeys(Keys.ENTER);
 
-        return new RepositoriesPage(driver);
+        return new SearchPage(driver);
     }
 
 }

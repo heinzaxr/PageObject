@@ -20,16 +20,16 @@ public class BaseHooks {
         }
     }
 
-    @After
-    public void cleanUp() {
-        driver.manage().deleteAllCookies();
-    }
-
     @AfterClass
     public static void teardown() {
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    @After
+    public void cleanUp() {
+        driver.manage().deleteAllCookies();
     }
 
 }

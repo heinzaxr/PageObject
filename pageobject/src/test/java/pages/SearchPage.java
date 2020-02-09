@@ -3,10 +3,10 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class RepositoriesPage extends AbstractPage {
+public class SearchPage extends AbstractPage {
     private By firstRepository = By.xpath("//a[@href='/selenide/selenide']");
 
-    public RepositoriesPage(WebDriver driver) {
+    public SearchPage(WebDriver driver) {
         super(driver);
     }
 

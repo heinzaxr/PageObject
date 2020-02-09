@@ -16,7 +16,7 @@ public class GithubTest extends BaseHooks {
         driver.findElement(By.xpath("//input[@name='q']")).sendKeys("Selenide");
         driver.findElement(By.xpath("//input[@name='q']")).sendKeys(Keys.ENTER);
         driver.findElement(By.xpath("//a[@href='/selenide/selenide']")).click();
-        driver.findElement(By.xpath("//a//span[text()='Issues']")).click();
+        driver.findElement(By.xpath("//nav[@aria-label='Repository']//span[text()='Issues']")).click();
         driver.findElement(By.xpath("//a[@data-hovercard-type='issue']")).click();
 
         String title =

@@ -4,16 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class RepositoryTopBarElement extends AbstractPage {
-    private By issues = By.xpath("//a//span[text()='Issues']");
+    private By issues = By.xpath("//nav[@aria-label='Repository']//span[text()='Issues']");
 
     public RepositoryTopBarElement(WebDriver driver) {
         super(driver);
     }
 
-    public IssuesPage openIssues() {
+    public ListOfIssuesPage openIssues() {
         driver.findElement(issues).click();
 
-        return new IssuesPage(driver);
+        return new ListOfIssuesPage(driver);
     }
 
 }

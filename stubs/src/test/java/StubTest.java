@@ -39,10 +39,6 @@ public class StubTest {
     }
 
 
-
-
-
-
     @Test
     public void testLondon() {
         WireMockServer wireMockServer = new WireMockServer(new WireMockConfiguration().port(9090));
