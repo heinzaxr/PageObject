@@ -19,11 +19,10 @@ public class GithubTest extends BaseHooks {
         driver.findElement(By.xpath("//a//span[text()='Issues']")).click();
         driver.findElement(By.xpath("//a[@data-hovercard-type='issue']")).click();
 
-        boolean noOneAssigned =
-                driver.findElement(By.xpath("//span[contains(text(),'No one assigned')]")).isDisplayed();
+        String title =
+                driver.findElement(By.xpath("//div[@class='TableObject-item']/span")).getAttribute("title");
 
-        assertThat(noOneAssigned, is(true));
+        assertThat(title, is("Status: Open"));
     }
-
 
 }

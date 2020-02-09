@@ -1,7 +1,7 @@
 package cases;
 
 import org.junit.Test;
-import pages.HomePage;
+import pages.LoginPage;
 import pages.IssuesPage;
 import pages.RepositoriesPage;
 import pages.RepositoryTopBarElement;
@@ -14,8 +14,8 @@ public class GithubPageObjectTest extends BaseHooks {
 
     @Test
     public void githubPageObjectTest() {
-        HomePage homePage = new HomePage(driver);
-        homePage.open()
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.open()
                 .search("Selenide");
 
         RepositoriesPage repositoriesPage = new RepositoriesPage(driver);
@@ -26,8 +26,9 @@ public class GithubPageObjectTest extends BaseHooks {
 
         IssuesPage issuesPage = new IssuesPage(driver);
         issuesPage.clickIssuesByNumber(0);
-        boolean noOneAssigned = issuesPage.noOneAssigned();
-        assertThat(noOneAssigned, is(true));
+
+        String title = issuesPage.getIssueTitle();
+        assertThat(title, is("Status: Open"));
     }
 
 }

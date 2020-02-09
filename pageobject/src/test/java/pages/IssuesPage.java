@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class IssuesPage extends BasePage {
+public class IssuesPage extends AbstractPage {
     private By issueList = By.xpath("//a[@data-hovercard-type='issue']");
-    private By noOneAssigned = By.xpath("//span[contains(text(),'No one assigned')]");
+    private By issueTitle = By.xpath("//div[@class='TableObject-item']/span");
 
     public IssuesPage(WebDriver driver) {
         super(driver);
@@ -21,8 +21,8 @@ public class IssuesPage extends BasePage {
         return new IssuesPage(driver);
     }
 
-    public boolean noOneAssigned() {
-        return driver.findElement(noOneAssigned).isDisplayed();
+    public String getIssueTitle() {
+        return driver.findElement(issueTitle).getAttribute("title");
     }
 
 }

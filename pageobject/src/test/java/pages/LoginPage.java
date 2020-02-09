@@ -4,15 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage extends BasePage {
+public class LoginPage extends AbstractPage {
     private static final String URL = "https://github.com/";
     private By searchInput = By.xpath("//input[@name='q']");
 
-    public HomePage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public HomePage open() {
+    public LoginPage open() {
         driver.get(URL);
 
         return this;
