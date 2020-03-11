@@ -10,7 +10,7 @@ public class OAuth2Filter implements Filter {
 
     @Override
     public Response filter(FilterableRequestSpecification requestSpec, FilterableResponseSpecification responseSpec, FilterContext ctx) {
-        requestSpec.replaceHeader("Authorization", "Bearer token");
+        requestSpec.replaceHeader("Authorization", "Bearer <token>");
         return ctx.next(requestSpec, responseSpec);
     }
 
